@@ -16,7 +16,7 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage (code quality) {
+        stage (Code Quality) {
             steps {
                 echo ' code quality'
             }
