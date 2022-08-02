@@ -1,10 +1,14 @@
 pipeline {
     agent any
+    tools 
+    {
+        maven 'maven'
+    }
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh 'mvn clean package'
             }
         }
         stage('Test') {
@@ -12,10 +16,30 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
+        stage (code quality) {
+            steps {
+                echo ' code quality'
+            }
+        }
+        stage('Deploy to Dev') {
             steps {
                 echo 'Deploying....'
             }
         }
+        stage('Deploy to test') {
+            steps {
+                echo 'test'
+            }
+        }
+        stage('Deploy to UAT') {
+            steps {
+                echo 'UAT'
+            }
+        }
+        stage('Deploy to prod') {
+            steps {
+                echo 'prod'
+            }
+        }
     }
-}
+}  
